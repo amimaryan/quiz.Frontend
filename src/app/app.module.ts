@@ -5,14 +5,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuestionComponent } from './question.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatButtonModule, MatInputModule, MatCardModule, MatListModule } from '@angular/material';
+import { MatButtonModule,
+         MatInputModule, 
+         MatCardModule, 
+         MatListModule, 
+         MatToolbarModule 
+        } from '@angular/material';
 import { FormsModule } from '@angular/forms';
 import { ApiService } from './api.service'
-import  { QuestionsComponent } from './questions.component';
+import { QuestionsComponent } from './questions.component';
+import { RouterModule } from  '@angular/router';
+import { HomeComponent } from './home.component';
+import { NavComponent } from './nav.component';
+
+const routes = [
+  {path: 'question', component: QuestionComponent},
+  {path: 'questions', component: QuestionsComponent},
+  {path: '', component: HomeComponent}
+]
 
 @NgModule({
   declarations: [
-    AppComponent, QuestionComponent, QuestionsComponent
+    AppComponent, QuestionComponent, QuestionsComponent, HomeComponent, NavComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +37,9 @@ import  { QuestionsComponent } from './questions.component';
     MatInputModule,
     MatCardModule,
     MatListModule,
-    FormsModule
+    MatToolbarModule,
+    FormsModule,
+    RouterModule.forRoot(routes)
 
   ],
   providers: [ApiService],
