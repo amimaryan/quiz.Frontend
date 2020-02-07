@@ -8,18 +8,9 @@ import { ApiService } from './api.service'
 
 export class QuizComponent {
 
-    question = {};
-    questions
-    
+    quiz = {}
     constructor(private api: ApiService){}
 
     ngOnInit() {
-        this.api.getQuestions().subscribe(res => {
-            this.questions = res
-        })
-    }
-
-    post(question) {
-        this.api.postQuestion(question)
     }
 }
