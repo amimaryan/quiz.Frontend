@@ -1,7 +1,6 @@
 import { Component } from '@angular/core'
 import { ApiService } from './api.service'
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast'
-import { throwToolbarMixedModesError } from '@angular/material';
+import { ActivatedRoute } from '@angular/router'
 
 @Component({
     selector: 'question',
@@ -10,15 +9,17 @@ import { throwToolbarMixedModesError } from '@angular/material';
 
 export class QuestionComponent {
 
-    question = {};
-    
-    constructor(private api: ApiService){}
-
+    question = {}
+    quizId;
+    constructor(private api: ApiService, private route: ActivatedRoute){}
     ngOnInit() {
+        this.quizId = this.route.snapshot.paramMap.get('quizId')
+        console.log(this.quizId)
         this.api.questionSelected.subscribe(question => this.question = question)
     }
 
     post(question) {
+        question.quizId = +this.quizId
         this.api.postQuestion(question)
     }
 }

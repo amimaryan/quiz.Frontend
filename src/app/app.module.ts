@@ -23,6 +23,7 @@ import { QuizListComponent } from './quiz-list.component'
 const routes = [
   {path: '', component: HomeComponent},
   {path: 'question', component: QuestionComponent},
+  {path: 'question/:quizId', component: QuestionComponent},
   {path: 'questions', component: QuestionsComponent},
   {path: 'quiz', component: QuizComponent},
   {path: 'quiz-list', component: QuizListComponent}
