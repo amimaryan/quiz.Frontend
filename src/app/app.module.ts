@@ -19,6 +19,7 @@ import { HomeComponent } from './home.component';
 import { NavComponent } from './nav.component';
 import { QuizComponent } from './quiz.component'
 import { QuizListComponent } from './quiz-list.component'
+import { RegisterComponent } from './register.component'
 
 const routes = [
   {path: '', component: HomeComponent},
@@ -26,12 +27,14 @@ const routes = [
   {path: 'question/:quizId', component: QuestionComponent},
   {path: 'questions', component: QuestionsComponent},
   {path: 'quiz', component: QuizComponent},
-  {path: 'quiz-list', component: QuizListComponent}
+  {path: 'quiz-list', component: QuizListComponent},
+  {path: 'register', component: RegisterComponent}
+  
 ]
 
 @NgModule({
   declarations: [
-    AppComponent, QuestionComponent, QuestionsComponent, HomeComponent, NavComponent, QuizComponent, QuizListComponent
+    AppComponent, QuestionComponent, QuestionsComponent, HomeComponent, NavComponent, QuizComponent, QuizListComponent, RegisterComponent
   ],
   imports: [
     BrowserModule,
