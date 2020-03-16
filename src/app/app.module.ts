@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuestionComponent } from './question.component';
@@ -21,6 +21,7 @@ import { QuizComponent } from './quiz.component'
 import { QuizListComponent } from './quiz-list.component'
 import { RegisterComponent } from './register.component'
 import { AuthService } from './auth.service'
+import { AuthInterceptor } from './auth.interceptor'
 
 const routes = [
   {path: '', component: HomeComponent},
@@ -52,7 +53,11 @@ const routes = [
     RouterModule.forRoot(routes)
 
   ],
-  providers: [ApiService, AuthService],
+  providers: [ApiService, AuthService, {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
