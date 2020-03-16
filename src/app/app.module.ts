@@ -11,7 +11,7 @@ import { MatButtonModule,
          MatListModule, 
          MatToolbarModule 
         } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from './api.service'
 import { QuestionsComponent } from './questions.component';
 import { RouterModule } from  '@angular/router';
@@ -20,6 +20,7 @@ import { NavComponent } from './nav.component';
 import { QuizComponent } from './quiz.component'
 import { QuizListComponent } from './quiz-list.component'
 import { RegisterComponent } from './register.component'
+import { AuthService } from './auth.service'
 
 const routes = [
   {path: '', component: HomeComponent},
@@ -47,10 +48,11 @@ const routes = [
     MatListModule,
     MatToolbarModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
 
   ],
-  providers: [ApiService],
+  providers: [ApiService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
