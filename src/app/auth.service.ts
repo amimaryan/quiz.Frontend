@@ -10,6 +10,10 @@ export class AuthService {
 
     constructor(private http: HttpClient, private router: Router) {}
 
+    get isAuthenticated(){
+            return !!localStorage.getItem('token')
+    }
+
     register(credentials){
             return this.http.post<any>(`https://localhost:44398/api/account/`, credentials)
                 .subscribe(res => {
@@ -29,6 +33,10 @@ export class AuthService {
                 localStorage.setItem('token', res)
 
                 this.router.navigate(['/'])
+        }
+
+        logout(){
+                localStorage.removeItem('token');
         }
 
 }
