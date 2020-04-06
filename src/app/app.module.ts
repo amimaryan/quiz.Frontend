@@ -9,7 +9,10 @@ import { MatButtonModule,
          MatInputModule, 
          MatCardModule, 
          MatListModule, 
-         MatToolbarModule 
+         MatToolbarModule,
+         MatExpansionModule,
+         MatRadioModule,
+         MatDialogModule
         } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ApiService } from './api.service'
@@ -24,6 +27,8 @@ import { LoginComponent } from './login.component'
 import { AuthService } from './auth.service'
 import { AuthInterceptor } from './auth.interceptor'
 import { PlayComponent } from './play.component'
+import { PlayQuizComponent } from './playQuiz.component'
+import { FinishedComponent } from './finished.component'
 
 const routes = [
   {path: '', component: HomeComponent},
@@ -34,12 +39,13 @@ const routes = [
   {path: 'quiz-list', component: QuizListComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'play', component: PlayComponent}
+  {path: 'play', component: PlayComponent},
+  {path: 'playQuiz/:quizId', component: PlayQuizComponent}
 ]
 
 @NgModule({
   declarations: [
-    AppComponent, QuestionComponent, QuestionsComponent, HomeComponent, NavComponent, QuizComponent, QuizListComponent, RegisterComponent, LoginComponent, PlayComponent
+    AppComponent, QuestionComponent, QuestionsComponent, HomeComponent, NavComponent, QuizComponent, QuizListComponent, RegisterComponent, LoginComponent, PlayComponent, PlayQuizComponent, FinishedComponent
   ],
   imports: [
     BrowserModule,
@@ -51,6 +57,9 @@ const routes = [
     MatCardModule,
     MatListModule,
     MatToolbarModule,
+    MatExpansionModule,
+    MatRadioModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(routes)
@@ -61,6 +70,7 @@ const routes = [
     useClass: AuthInterceptor,
     multi: true
   }],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [FinishedComponent]
 })
 export class AppModule { }
